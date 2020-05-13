@@ -14,7 +14,7 @@ class DandisetSerializer(serializers.ModelSerializer):
     """
     Serializes a dandiset with all file information
     """
-    nwb_files = NWBFileSerializer(many=True)
+    nwb_files = NWBFileSerializer(source="nwbfile_set", many=True)
 
     class Meta:
         model = Dandiset
