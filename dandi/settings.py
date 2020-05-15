@@ -77,10 +77,12 @@ class DjangoConfig(Config):
         'django.contrib.contenttypes',
         'django.contrib.sessions',
         'django.contrib.messages',
+        'corsheaders',
         'publish',
     ]
 
     MIDDLEWARE = [
+        'corsheaders.middleware.CorsMiddleware',
         'django.middleware.security.SecurityMiddleware',
         'django.contrib.sessions.middleware.SessionMiddleware',
         'django.middleware.common.CommonMiddleware',
@@ -130,7 +132,6 @@ class DjangoConfig(Config):
     TIME_ZONE = 'UTC'
     USE_I18N = True # TODO: why?
     USE_L10N = True # TODO: why?
-
 
 
 class LoggingConfig(Config):
@@ -315,10 +316,14 @@ class DevelopmentConfiguration(MinioStorageConfig, DebugToolbarConfig,
     DEBUG = True
     INTERNAL_IPS = ['127.0.0.1']
     SECRET_KEY = 'insecuresecret'
+    CORS_ORIGIN_ALLOW_ALL = True
 
 
 class ProductionConfiguration(S3StorageConfig, BaseConfiguration):
-    pass
+    CORS_ORIGIN_WHITELIST = ["https://gui.dandiarchive.org"]
+    # TODO this should allow us to test publishes from branch previews
+    # TODO this might be a bad idea
+    CORS_ORIGIN_REGEX_WHITELIST = [r"^https://[0-9a-f]+--gui-dandiarchive-org\.netlify\.app$"]
 
 
 class HerokuProductionConfiguration(ProductionConfiguration):

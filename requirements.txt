@@ -5,6 +5,7 @@ django-configurations[database]
 django-debug-toolbar
 django-minio-storage
 django-storages
+django-cors-headers
 djangorestframework
 gunicorn
 httpx
