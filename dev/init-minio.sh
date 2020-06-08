@@ -18,7 +18,7 @@ echo " done"
 #
 # Use "docker run -t" for color output
 # Run "mc" once with no output to suppress confusing mc initialization
-docker run --rm -t --network dandi-publish_default --entrypoint /bin/sh minio/mc -c '
+docker run --rm -t --network dandipublish_default --entrypoint /bin/sh minio/mc -c '
 /usr/bin/mc > /dev/null \
 && /usr/bin/mc config host add minio http://minio:9000 minioAdminAccessKey minioAdminSecretKey \
 && /usr/bin/mc admin user add minio djangoAccessKey djangoSecretKey \
