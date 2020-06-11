@@ -336,7 +336,7 @@ class SentryConfig(Config):
 class DebugToolbarConfig(Config):
     @staticmethod
     def before_binding(configuration: Type[ComposedConfiguration]):
-        configuration.INSTALLED_APPS += ['debug_toolbar']
+        configuration.INSTALLED_APPS += ['debug_toolbar', 'django_extensions']
         configuration.MIDDLEWARE.insert(0, 'debug_toolbar.middleware.DebugToolbarMiddleware')
         # TODO: 'django_extensions' ?
 
