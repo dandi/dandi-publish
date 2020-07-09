@@ -14,6 +14,7 @@ services:
       - postgres
       - rabbitmq
       - minio
+      - girder
 
   celery:
     build:
@@ -32,3 +33,42 @@ services:
       - postgres
       - rabbitmq
       - minio
+
+  mongo:
+    image: mongo:latest
+    # volumes:
+    #   - dandi_girder_mongo_db:/data/db
+
+  girder:
+    build:
+      context: .
+      dockerfile: dev/dandiarchive/girder.Dockerfile
+    image: dandi_girder
+    # volumes:
+    #   - dandi_girder_assetstore:/home/assetstore
+    depends_on:
+      - mongo
+    ports:
+      - "8091:8080"
+
+  client:
+    build:
+      context: .
+      dockerfile: dev/dandiarchive/client.Dockerfile
+    image: dandi_client
+    depends_on:
+      - girder
+    ports:
+      - "8092:80"
+
+  provision:
+    build:
+      context: .
+      dockerfile: dev/dandiarchive/provision.Dockerfile
+    image: dandi_provision
+    depends_on:
+      - client
+
+# volumes:
+#   dandi_girder_mongo_db:
+#   dandi_girder_assetstore:
