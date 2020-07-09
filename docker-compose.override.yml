@@ -36,16 +36,16 @@ services:
 
   mongo:
     image: mongo:latest
-    # volumes:
-    #   - dandi_girder_mongo_db:/data/db
+    volumes:
+      - dandi_girder_mongo_db:/data/db
 
   girder:
     build:
       context: .
       dockerfile: dev/dandiarchive/girder.Dockerfile
     image: dandi_girder
-    # volumes:
-    #   - dandi_girder_assetstore:/home/assetstore
+    volumes:
+      - dandi_girder_assetstore:/home/assetstore
     depends_on:
       - mongo
     ports:
@@ -69,6 +69,6 @@ services:
     depends_on:
       - client
 
-# volumes:
-#   dandi_girder_mongo_db:
-#   dandi_girder_assetstore:
+volumes:
+  dandi_girder_mongo_db:
+  dandi_girder_assetstore:
