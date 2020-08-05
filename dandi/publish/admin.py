@@ -20,6 +20,4 @@ class AssetAdmin(admin.ModelAdmin):
     list_display = ['id', 'uuid', 'path']
     list_display_links = ['id', 'uuid']
 
-@admin.register(Contributor)
-class Contributor(admin.ModelAdmin):
-    list_display = []
+admin.site.register(Contributor)
