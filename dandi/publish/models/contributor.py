@@ -30,15 +30,15 @@ class Contributor(models.Model):
         StudyParticipant = "StudyParticipant"
         Other = "Other"
 
-    name = models.TextField(default=str)
-    email = models.TextField(default=str)
-    orcid = models.TextField(default=str)
+    name = models.CharField(default=str, max_length=150) # TODO: verify max_length is correct
+    email = models.TextField(default=str) # TODO: need max length, use charfield if possible
+    orcid = models.TextField(default=str) # TODO: same as email
     roles = ArrayField(
         models.CharField(max_length=21, choices=RoleType.choices, default=RoleType.Other),
         default=list
     )
     affiliations = ArrayField(
-        models.TextField(default=str), default=list
+        models.TextField(default=str), default=list # TODO: need max length, use charfield if possible
     )
 
     def __str__(self) -> str:

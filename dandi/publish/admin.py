@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Asset, Dandiset, Version
+from .models import Asset, Contributor, Dandiset, Version
 
 
 @admin.register(Dandiset)
@@ -19,3 +19,7 @@ class VersionAdmin(admin.ModelAdmin):
 class AssetAdmin(admin.ModelAdmin):
     list_display = ['id', 'uuid', 'path']
     list_display_links = ['id', 'uuid']
+
+@admin.register(Contributor)
+class Contributor(admin.ModelAdmin):
+    list_display = []
