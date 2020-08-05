@@ -10,6 +10,7 @@ from django.db import models
 
 from dandi.publish.girder import GirderClient
 from .common import SelectRelatedManager
+from .contributor import Contributor
 from .dandiset import Dandiset
 
 logger = logging.getLogger(__name__)
@@ -32,6 +33,8 @@ class Version(models.Model):
 
     name = models.CharField(max_length=150)
     description = models.TextField(max_length=3000)
+
+    contributors = models.ManyToManyField(Contributor)
 
     metadata = JSONField(blank=True, default=dict)
 
@@ -93,6 +96,7 @@ class Version(models.Model):
 
         name = metadata['dandiset'].pop('name')
         description = metadata['dandiset'].pop('description')
+        contributors = metadata['dandiset'].pop('contributors')
 
         if len(description) > 3000:
             raise ValidationError(
@@ -101,4 +105,15 @@ class Version(models.Model):
 
         version = Version(dandiset=dandiset, name=name, description=description, metadata=metadata)
         version.save()
+
+        for contributor in contributors:
+            new_contributor, succeeded = Contributor.objects.get_or_create(
+                name=contributor.get('name'),
+                email=contributor.get('email'),
+                affiliations=contributor.get('affiliations'),
+                orcid=contributor.get('orcid'),
+                roles=contributor.get('roles')
+            )
+            version.contributors.add(new_contributor)
+
         return version
