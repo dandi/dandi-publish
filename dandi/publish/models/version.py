@@ -109,13 +109,15 @@ class Version(models.Model):
         for contributor in contributors:
             for role in contributor.get('roles'):
                 if role not in Contributor.RoleType:
-                    raise ValidationError(f'Invalid role "{role}" in dandiset {dandiset.draft_folder_id}.')
+                    raise ValidationError(
+                        f'Invalid role "{role}" in dandiset {dandiset.draft_folder_id}.'
+                    )
             new_contributor, succeeded = Contributor.objects.get_or_create(
                 name=contributor.get('name'),
                 email=contributor.get('email'),
                 affiliations=contributor.get('affiliations'),
                 orcid=contributor.get('orcid'),
-                roles=contributor.get('roles')
+                roles=contributor.get('roles'),
             )
             version.contributors.add(new_contributor)
 

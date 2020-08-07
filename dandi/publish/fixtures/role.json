@@ -1,0 +1,184 @@
+[
+  {
+    "model": "publish.role",
+    "pk": 1,
+    "fields": {
+      "roleName": "Author"
+    }
+  },
+  {
+    "model": "publish.role",
+    "pk": 2,
+    "fields": {
+      "roleName": "Conceptualization"
+    }
+  },
+  {
+    "model": "publish.role",
+    "pk": 3,
+    "fields": {
+      "roleName": "ContactPerson"
+    }
+  },
+  {
+    "model": "publish.role",
+    "pk": 4,
+    "fields": {
+      "roleName": "DataCollector"
+    }
+  },
+  {
+    "model": "publish.role",
+    "pk": 5,
+    "fields": {
+      "roleName": "DataCurator"
+    }
+  },
+  {
+    "model": "publish.role",
+    "pk": 6,
+    "fields": {
+      "roleName": "DataManager"
+    }
+  },
+  {
+    "model": "publish.role",
+    "pk": 7,
+    "fields": {
+      "roleName": "FormalAnalysis"
+    }
+  },
+  {
+    "model": "publish.role",
+    "pk": 8,
+    "fields": {
+      "roleName": "FundingAcquisition"
+    }
+  },
+  {
+    "model": "publish.role",
+    "pk": 9,
+    "fields": {
+      "roleName": "Investigation"
+    }
+  },
+  {
+    "model": "publish.role",
+    "pk": 10,
+    "fields": {
+      "roleName": "Maintainer"
+    }
+  },
+  {
+    "model": "publish.role",
+    "pk": 11,
+    "fields": {
+      "roleName": "Methodology"
+    }
+  },
+  {
+    "model": "publish.role",
+    "pk": 12,
+    "fields": {
+      "roleName": "Producer"
+    }
+  },
+  {
+    "model": "publish.role",
+    "pk": 13,
+    "fields": {
+      "roleName": "ProjectLeader"
+    }
+  },
+  {
+    "model": "publish.role",
+    "pk": 14,
+    "fields": {
+      "roleName": "ProjectManager"
+    }
+  },
+  {
+    "model": "publish.role",
+    "pk": 15,
+    "fields": {
+      "roleName": "ProjectMember"
+    }
+  },
+  {
+    "model": "publish.role",
+    "pk": 16,
+    "fields": {
+      "roleName": "ProjectAdministration"
+    }
+  },
+  {
+    "model": "publish.role",
+    "pk": 17,
+    "fields": {
+      "roleName": "Researcher"
+    }
+  },
+  {
+    "model": "publish.role",
+    "pk": 18,
+    "fields": {
+      "roleName": "Resources"
+    }
+  },
+  {
+    "model": "publish.role",
+    "pk": 19,
+    "fields": {
+      "roleName": "Software"
+    }
+  },
+  {
+    "model": "publish.role",
+    "pk": 20,
+    "fields": {
+      "roleName": "Supervision"
+    }
+  },
+  {
+    "model": "publish.role",
+    "pk": 21,
+    "fields": {
+      "roleName": "Validation"
+    }
+  },
+  {
+    "model": "publish.role",
+    "pk": 22,
+    "fields": {
+      "roleName": "Visualization"
+    }
+  },
+  {
+    "model": "publish.role",
+    "pk": 23,
+    "fields": {
+      "roleName": "Funder"
+    }
+  },
+  {
+    "model": "publish.role",
+    "pk": 24,
+    "fields": {
+      "roleName": "Sponsor"
+    }
+  },
+  {
+    "model": "publish.role",
+    "pk": 25,
+    "fields": {
+      "roleName": "StudyParticipant"
+    }
+  },
+  {
+    "model": "publish.role",
+    "pk": 26,
+    "fields": {
+      "roleName": "Other"
+    }
+  }
+]

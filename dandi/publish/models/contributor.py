@@ -1,45 +1,28 @@
 from django.db import models
 from django.contrib.postgres.fields import ArrayField, JSONField
 
+from .role import Role
+
+
 class Contributor(models.Model):
-    class RoleType(models.TextChoices):
-        Author = "Author"
-        Conceptualization = "Conceptualization"
-        ContactPerson = "ContactPerson"
-        DataCollector = "DataCollector"
-        DataCurator = "DataCurator"
-        DataManager = "DataManager"
-        FormalAnalysis = "FormalAnalysis"
-        FundingAcquisition = "FundingAcquisition"
-        Investigation = "Investigation"
-        Maintainer = "Maintainer"
-        Methodology = "Methodology"
-        Producer = "Producer"
-        ProjectLeader = "ProjectLeader"
-        ProjectManager = "ProjectManager"
-        ProjectMember = "ProjectMember"
-        ProjectAdministration = "ProjectAdministration"
-        Researcher = "Researcher"
-        Resources = "Resources"
-        Software = "Software"
-        Supervision = "Supervision"
-        Validation = "Validation"
-        Visualization = "Visualization"
-        Funder = "Funder"
-        Sponsor = "Sponsor"
-        StudyParticipant = "StudyParticipant"
-        Other = "Other"
+    # https://github.com/dandi/schema/blob/master/releases/1.0.0-rc1/dandiset.json#L424
 
-    name = models.CharField(default=str, max_length=150) # TODO: verify max_length is correct
-    email = models.TextField(default=str) # TODO: need max length, use charfield if possible
-    orcid = models.TextField(default=str) # TODO: same as email
-    roles = ArrayField(
-        models.CharField(max_length=21, choices=RoleType.choices, default=RoleType.Other),
-        default=list
-    )
-    affiliations = ArrayField(
-        models.TextField(default=str), default=list # TODO: need max length, use charfield if possible
-    )
+    identifier = models.TextField(max_length=65536, blank=True)
 
-    def __str__(self) -> str:
-        return f'name: {self.name}, email: {self.email}, orcid: {self.orcid}, roles: {self.roles}), affiliations: {self.affiliations}'
+    name = models.CharField(max_length=255)
+
+    email = models.CharField(max_length=254, blank=True)
+
+    url = models.TextField(max_length=65536, blank=True)  # TODO: validate length on the api level
+
+    roleName = models.ManyToManyField(Role)
+
+    includeInCitation = models.BooleanField(blank=True)
+
+    awardNumber = models.TextField(max_length=65536, blank=True)  # TODO: validate length
+
+    contributorType = models.CharField(max_length=12)  # 'Person' or 'Organization'
+
+    affiliation = ArrayField(models.CharField(max_length=255), blank=True) # TODO: remove these arrayfields
+
+    contactPoint = ArrayField(models.CharField(max_length=255), blank=True)

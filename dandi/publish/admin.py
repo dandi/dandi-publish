@@ -20,4 +20,7 @@ class AssetAdmin(admin.ModelAdmin):
     list_display = ['id', 'uuid', 'path']
     list_display_links = ['id', 'uuid']
 
-admin.site.register(Contributor)
+
+@admin.register(Contributor)
+class ContributorAdmin(admin.ModelAdmin):
+    filter_horizontal = ('roleName',)
