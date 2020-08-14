@@ -45,6 +45,7 @@ setup(
         'django-filter',
         'django-girders',
         'djangorestframework',
+        'djoser',
         'drf-extensions',
         'drf-yasg',
         'httpx',
