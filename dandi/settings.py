@@ -50,6 +50,8 @@ class DandiConfig(ConfigMixin):
     DANDI_GIRDER_API_URL = values.URLValue(environ_required=True)
     DANDI_GIRDER_API_KEY = values.Value(environ_required=True)
 
+    ALLOWED_HOSTS = values.ListValue([])
+
 
 class DevelopmentConfiguration(DandiConfig, DevelopmentBaseConfiguration):
     pass
